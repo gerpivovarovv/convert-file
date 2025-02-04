@@ -69,8 +69,7 @@ def upload_example1():
   job = job_response.json()
   print("Job created", job["id"])
 
-  # Job will proceed as soon as the upload is finished.
-  # We need to wait for job completion/failure using polling or websocket (see relevant code examples).
+
   wait_for_job_by_polling(job["id"])
 
 upload_example1()
