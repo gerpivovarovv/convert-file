@@ -39,7 +39,6 @@ def upload_example1():
   uploader_form = upload_task_response.json()["result"]["form"]
   print("Created task", upload_task_id)
 
-  # Attach required form parameters and the file
   formdata = {}
   for parameter, value in uploader_form["parameters"].items():
     formdata[parameter] = value
