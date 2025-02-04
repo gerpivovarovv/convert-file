@@ -34,7 +34,6 @@ def wait_for_job_by_polling(job_id):
 def upload_example1():
   print("upload example 1")
 
-  # Create an import/upload task
   upload_task_response = freeconvert.post(f"{base_url}/process/import/upload")
   upload_task_id = upload_task_response.json()["id"]
   uploader_form = upload_task_response.json()["result"]["form"]
