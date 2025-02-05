@@ -31,7 +31,7 @@ def wait_for_job_by_polling(job_id):
 
   raise Exception("Poll timeout")
 
-def upload_example1():
+def upload():
   print("upload example 1")
 
   upload_task_response = freeconvert.post(f"{base_url}/process/import/upload")
@@ -69,5 +69,3 @@ def upload_example1():
 
 
   wait_for_job_by_polling(job["id"])
-
-upload_example1()

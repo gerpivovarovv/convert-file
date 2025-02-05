@@ -6,7 +6,9 @@ from aiogram import Bot, Dispatcher, html
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
-from aiogram.types import Message
+from aiogram.types import Message, FSInputFile
+from converter import upload
+import os
 
 
 TOKEN = tg_token
@@ -22,12 +24,17 @@ async def command_start_handler(message: Message) -> None:
 
 
 @dp.message()
-async def echo_handler(message: Message) -> None:
+async def file_convert(message: Message) -> None:
     try:
         file_id = message.document.file_id
         print(file_id)
         await Bot.download(bot, file_id, "test.pdf", 120)
-        await message.answer("Круто)")
+        await message.answer('Круто)')
+        upload()
+        os.remove('test.pdf')
+        await message.answer_document(document=FSInputFile('my-converted-file.odt'))
+        os.remove('my-converted-file.odt')
+
     except AttributeError:
         await message.answer("Пришли pdf файл")
 
